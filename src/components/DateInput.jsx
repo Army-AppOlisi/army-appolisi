@@ -12,19 +12,22 @@ import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/24/outline";
 
 export default function DateInput() {
   const [date, setDate] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleDatePicker = (selectedDate) => {
     console.log(selectedDate);
     setDate(selectedDate);
+    setIsOpen(!isOpen);
   };
 
   return (
     <div className="p-5">
-      <Popover placement="bottom">
+      <Popover placement="bottom" open={isOpen}>
         <PopoverHandler>
           <Input
             label="Select a Date"
             value={date ? format(date, "PPP") : ""}
+            onSelect={() => setIsOpen(!isOpen)}
           />
         </PopoverHandler>
         <PopoverContent>
