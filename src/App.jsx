@@ -1,14 +1,12 @@
 import "./App.css";
 import Header from "./components/Header";
-import Questions from "./components/Questions";
-
-
+import Form from "./components/Form";
 
 function App() {
   return (
     <>
       <Header />
-      <Questions />
+      <Form />
     </>
   );
 }

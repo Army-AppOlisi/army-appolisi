@@ -11,11 +11,11 @@ export default function MonthsInput() {
   }, [selectedMonth]);
 
   return (
-    <div className="p-5 w-75">
+    <>
       <Select
         onChange={(value) => setSelectedMonth(value)}
         defaultValue={selectedMonth}
-        label="Select Months"
+        label="Διάλεξε μήνες"
       >
         <Option value="4">4</Option>
         <Option value="6">6</Option>
@@ -23,6 +23,6 @@ export default function MonthsInput() {
         <Option value="9">9</Option>
         <Option value="12">12</Option>
       </Select>
-    </div>
+    </>
   );
 }
