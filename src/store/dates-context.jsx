@@ -38,6 +38,7 @@ const initialState = {
     remain: 0,
 }
 
+// eslint-disable-next-line react/prop-types
 export default function DatesContextProvider({children}){
     const [datesState, datesDispatcher] = useReducer(datesReducer, initialState)
 
