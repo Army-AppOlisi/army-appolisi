@@ -25,9 +25,9 @@ export default function Form() {
           </Typography>
           <MonthsInput />
         </div>
-        {/* <Button className="mt-6" fullWidth>
+        <Button className="mt-6" fullWidth>
           Results
-        </Button> */}
+        </Button>
       </form>
     </Card>
   );

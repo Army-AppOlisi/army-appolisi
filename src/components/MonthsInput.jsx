@@ -11,7 +11,6 @@ export default function MonthsInput() {
   }, [selectedMonth]);
 
   return (
-    <>
       <Select
         onChange={(value) => setSelectedMonth(value)}
         defaultValue={selectedMonth}
@@ -23,6 +22,5 @@ export default function MonthsInput() {
         <Option value="9">9</Option>
         <Option value="12">12</Option>
       </Select>
-    </>
   );
 }
