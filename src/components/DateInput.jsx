@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import {
   Input,
@@ -10,14 +10,17 @@ import {
 import { format } from "date-fns";
 import { DayPicker } from "react-day-picker";
 import { ChevronRightIcon, ChevronLeftIcon } from "@heroicons/react/24/outline";
+import { DatesContext } from "../store/dates-context"; // Adjust the path accordingly
 
 export default function DateInput() {
   const [date, setDate] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
+  const { setStartDate } = useContext(DatesContext); // Retrieve setStartedDate from context
 
   const handleDatePicker = (selectedDate) => {
     console.log(selectedDate);
     setDate(selectedDate);
+    setStartDate(selectedDate);
     setIsOpen(!isOpen);
   };
   return (

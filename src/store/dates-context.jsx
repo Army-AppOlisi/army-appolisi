@@ -8,23 +8,28 @@ export const DatesContext = createContext({
     sum: undefined,
     served: undefined,
     remain: undefined,
-    setStartedDate: () => {},
+    setStartDate: () => {},
     setEndDate: () => {}
 })
 
 function datesReducer(state, action){
     switch (action.type){
-        case "SET_STARTED_DATE":
+        case "SET_START_DATE":
             return {
-                ...state,
-                startedDate: action.payload
-            }
+              ...state,
+              startDate: action.payload,
+            //   endDate: new Date(action.payload.setMonth(
+            //     action.payload.getMonth() + state.months
+            //   )),
+            };
         case "SET_MONTHS_END_DATE":
             return {
-                ...state,
-                months: action.payload
-                // endDate: startedDate + action.payload ?? smth like that will be configured
-            }
+              ...state,
+              months: action.payload,
+            //   endDate: new Date(state.startDate.setMonth(
+            //     state.startDate.getMonth() + action.payload
+            //   )),
+            };
     }
     return state;
 }
@@ -40,24 +45,22 @@ const initialState = {
 
 // eslint-disable-next-line react/prop-types
 export default function DatesContextProvider({children}){
-    const [datesState, datesDispatcher] = useReducer(datesReducer, initialState)
+  const [datesState, datesDispatcher] = useReducer(datesReducer, initialState);
 
-    const ctxValue={
-        startDate: datesState.startDate,
-        months: datesState.months,
-        endDate: datesState.endDate,
-        current: datesState.current,
-        sum: datesState.sum,
-        served: datesState.served,
-        remain: datesState.remain,
-        setStartedDate: (startedDate) => datesDispatcher({type: "SET_STARTED_DATE", payload: startedDate}),
-        setEndDate: (months) => datesDispatcher({type: "SET_END_DATE", payload: months}), 
-    }
+  const ctxValue = {
+    startDate: datesState.startDate,
+    months: datesState.months,
+    endDate: datesState.endDate,
+    current: datesState.current,
+    sum: datesState.sum,
+    served: datesState.served,
+    remain: datesState.remain,
+    setStartDate: (startDate) =>  datesDispatcher({ type: "SET_START_DATE", payload: startDate }),
+    setEndDate: (months) =>
+      datesDispatcher({ type: "SET_MONTHS_END_DATE", payload: months }),
+  };
 
-    return (
-        <DatesContext.Provider value = {ctxValue}>
-            {children}
-        </DatesContext.Provider>
-    )
-
+  return (
+    <DatesContext.Provider value={ctxValue}>{children}</DatesContext.Provider>
+  );
 }

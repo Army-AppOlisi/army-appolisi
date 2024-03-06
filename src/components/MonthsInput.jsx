@@ -1,12 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Select, Option } from "@material-tailwind/react";
+import { DatesContext } from "../store/dates-context"; // Adjust the path accordingly
+
 
 export default function MonthsInput() {
   const [selectedMonth, setSelectedMonth] = useState(null);
+   const { setEndDate } = useContext(DatesContext); 
 
   useEffect(() => {
     if (selectedMonth !== null) {
       console.log(selectedMonth);
+      setEndDate(selectedMonth);
     }
   }, [selectedMonth]);
 
