@@ -27,7 +27,7 @@ function datesReducer(state, action){
               ...state,
               months: action.payload,
             //   endDate: new Date(state.startDate.setMonth(
-            //     state.startDate.getMonth() + 2
+            //     state.startDate.getMonth() + action.payload
             //   )),
             };
     }
