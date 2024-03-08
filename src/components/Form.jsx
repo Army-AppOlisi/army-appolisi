@@ -1,5 +1,6 @@
 import DateInput from "./DateInput";
 import MonthsInput from "./MonthsInput";
+import Results from "./Results";
 
 import { Card, Button, Typography } from "@material-tailwind/react";
 
@@ -21,6 +22,7 @@ export default function Form() {
           Results
         </Button>
       </form>
+      <Results /> 
     </Card>
   );
 }
