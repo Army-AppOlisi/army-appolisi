@@ -1,27 +1,31 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function DifBtwDates({ title, startDate, endDate }) {
-  const [difference, setDifference] = useState(null);
+function DifBtwDates({ title, difference }) {
 
-  const handleCalculateDif = () => {
-    const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+  // useEffect(() => {
+  //   const calculateDifference = () => {
+  //     const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
 
-    const startDateObj = new Date(startDate);
-    const endDateObj = new Date(endDate);
+  //     const startDateObj = new Date(startDate);
+  //     const endDateObj = new Date(endDate);
 
-    const diffDays = Math.round(
-      Math.abs((startDateObj - endDateObj) / oneDay) - 1
-    );
+  //     const diffDays = Math.round(
+  //       Math.abs((startDateObj - endDateObj) / oneDay) - 1
+  //     );
 
-    setDifference(diffDays);
-  };
+  //     setDifference(diffDays);
+  //   };
+
+  //   calculateDifference();
+  // }, [startDate, endDate]);
 
   return (
     <div>
       <h2>{title}</h2>
-      <button onClick={handleCalculateDif}>Calculate Difference</button>
-      <br />
-      {difference !== null && <p>Difference in days: {difference}</p>}
+      <p>
+        Difference in days:{" "}
+        {difference !== null ? difference : "Calculating..."}
+      </p>
     </div>
   );
 }
