@@ -18,7 +18,6 @@ export default function DateInput() {
   const { setStartDate } = useContext(DatesContext); // Retrieve setStartedDate from context
 
   const handleDatePicker = (selectedDate) => {
-    console.log(selectedDate);
     setDate(selectedDate);
     setStartDate(selectedDate);
     setIsOpen(!isOpen);

@@ -9,7 +9,6 @@ export default function MonthsInput() {
 
   useEffect(() => {
     if (selectedMonth !== null) {
-      console.log(selectedMonth);
       setEndDate(selectedMonth);
     }
   }, [selectedMonth]);
